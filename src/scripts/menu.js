@@ -1,6 +1,9 @@
-const menu = document.querySelector(".menu");
+function initMenu() {
+  const menu = document.querySelector(".menu");
+  menu?.addEventListener("click", () => {
+    const isExpanded = menu.getAttribute("aria-expanded") === "true";
+    menu.setAttribute("aria-expanded", String(!isExpanded));
+  });
+}
 
-menu?.addEventListener("click", () => {
-  const isExpanded = menu.getAttribute("aria-expanded") === "true";
-  menu.setAttribute("aria-expanded", `${!isExpanded}`);
-});
+document.addEventListener("astro:page-load", initMenu);
