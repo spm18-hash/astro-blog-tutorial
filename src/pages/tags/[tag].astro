@@ -1,5 +1,4 @@
 ---
-import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
 import { getCollection } from "astro:content";
@@ -10,7 +9,6 @@ export const getStaticPaths = async () => {
     const uniqueTags = [
         ...new Set(allPosts.flatMap((post: any) => post.data.tags)),
     ];
-    console.log(uniqueTags);
     return uniqueTags.map((tag) => {
         const filterPosts = allPosts.filter((post: any) =>
             post.data.tags.includes(tag),
